@@ -11,6 +11,7 @@ public class Budget {
 
     @Id
     private String id;
+    private String userId;
     private String budgetName;
     private Double amount;
     private Date startDate;
@@ -27,8 +28,9 @@ public class Budget {
     }
 
     
-    public Budget(String budgetName, Double amount, Date startDate, Date endDate, BudgetStatus status, Date createdAt,
+    public Budget(String userId, String budgetName, Double amount, Date startDate, Date endDate, BudgetStatus status, Date createdAt,
             Date updatedAt) {
+        this.userId = userId;
         this.budgetName = budgetName;
         this.amount = amount;
         this.startDate = startDate;
@@ -86,11 +88,24 @@ public class Budget {
         this.updatedAt = updatedAt;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
 
     @Override
     public String toString() {
-        return "Budget [id=" + id + ", budgetName=" + budgetName + ", amount=" + amount + ", startDate=" + startDate
-                + ", endDate=" + endDate + ", status=" + status + ", createdAt=" + createdAt + ", updatedAt="
-                + updatedAt + "]";
+        return "Budget [id=" + id + ", userId=" + userId + ", budgetName=" + budgetName + ", amount=" + amount
+                + ", startDate=" + startDate + ", endDate=" + endDate + ", status=" + status + ", createdAt="
+                + createdAt + ", updatedAt=" + updatedAt + "]";
     }
+
+
+   
+
+    
 }

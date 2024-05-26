@@ -21,13 +21,6 @@ public class ExceptionHandlerAdvice {
 		return new ResponseEntity<>(new ApiResponse(false, message), HttpStatus.CONFLICT);
 	}
 	
-//	@ExceptionHandler(AccessDeniedException.class)
-//	public ResponseEntity<ApiResponse> accessDenied(AccessDeniedException ex){
-//		String message = ex.getMessage();
-//		
-//		return new ResponseEntity<ApiResponse>(new ApiResponse(false, message), HttpStatus.FORBIDDEN);
-//	}
-	
 	@ExceptionHandler(ValidationException.class)
 	public ResponseEntity<ApiResponse> validationException(ValidationException ex){
 		String message = ex.getMessage();

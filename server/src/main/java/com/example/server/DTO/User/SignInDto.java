@@ -20,5 +20,6 @@ public class SignInDto {
     }
     public void setPassword(String password) {
         this.password = password;
-    }
+    }   
+
 }

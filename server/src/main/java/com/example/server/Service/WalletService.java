@@ -11,43 +11,42 @@ import com.example.server.Models.Transaction;
 import com.example.server.Models.User;
 import com.example.server.Models.Wallet;
 import com.example.server.Repository.UserRepository;
-import  com.example.server.Repository.WalletRepository;
+import com.example.server.Repository.WalletRepository;
 import com.example.server.Util.Helper;
 
 @Service
 @Transactional
 public class WalletService {
-    
+
     @Autowired
     WalletRepository walletRepository;
 
     @Autowired
     UserRepository userRepository;
 
-    public Wallet updateWallet(Transaction transaction) throws CustomException{
-        
+    public Wallet updateWallet(Transaction transaction) throws CustomException {
+
         User user = userRepository.findUserById(transaction.getUserId());
-        
-        if(Helper.notNull(userRepository.findUserByEmail(user.getEmail()))){
+
+        if (Helper.notNull(userRepository.findUserByEmail(user.getEmail()))) {
             throw new CustomException("User already exists");
         }
         Wallet wallet = walletRepository.findWalletById(transaction.getUserId());
 
-        if(transaction.getTransactionType() == TransactionType.income){
+        if (transaction.getTransactionType() == TransactionType.income) {
             wallet.setAmount(wallet.getAmount() + transaction.getAmount());
-        }else{
+        } else {
             wallet.setAmount(wallet.getAmount() - transaction.getAmount());
         }
 
-        return  walletRepository.save(wallet);
+        return walletRepository.save(wallet);
     }
 
-    public Wallet getSingleWallet(String theId) throws DataNotExistException{
+    public Wallet getSingleWallet(String theId) throws DataNotExistException {
         Wallet walletSearch = walletRepository.findWalletById(theId);
-        if(walletSearch == null){
+        if (walletSearch == null) {
             throw new DataNotExistException("Wallet is not present");
         }
-
         return walletSearch;
     }
 

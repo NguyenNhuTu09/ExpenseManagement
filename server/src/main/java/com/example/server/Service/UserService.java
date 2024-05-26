@@ -40,11 +40,11 @@ public class UserService {
     Logger logger = LoggerFactory.getLogger(UserService.class);
     
     String hashPassword(String password) throws NoSuchAlgorithmException {
-          MessageDigest md = MessageDigest.getInstance("MD5");
-          md.update(password.getBytes());
-          byte[] digest = md.digest();
-          String myHash = DatatypeConverter.printHexBinary(digest).toUpperCase();
-          return myHash;
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(password.getBytes());
+        byte[] digest = md.digest();
+        String myHash = DatatypeConverter.printHexBinary(digest).toUpperCase();
+        return myHash;
     }
 
     public ResponseDto signUp(SignUpDto signUpDto) throws CustomException{
@@ -56,7 +56,7 @@ public class UserService {
         try { 
             encryptedPassword = hashPassword(signUpDto.getPassword()); 
         }catch(NoSuchAlgorithmException e){     
-            logger.error("hashing password failed {}", e.getMessage());
+            logger.error("hashing password failed", e.getMessage());
         }
 
         User user = new User(signUpDto.getUserName(), 
@@ -92,14 +92,11 @@ public class UserService {
             logger.error("hashing password failed {}", e);
             throw new CustomException(e.getMessage());
         }
-
         AuthenticationToken token = authenticationService.getToken(user);
 
         if(!Helper.notNull(token)){
             throw new CustomException("Token not present");
         }
-
-        // System.out.println(user);
 
         return new SignInResponseDto("Success", token.getToken());
     }
@@ -133,8 +130,7 @@ public class UserService {
             throw new CustomException(e.getMessage());
         }
 
-     }
-
+    }                                                   
     boolean canCrudUser(Role role){
         return role == Role.Admin || role == Role.Manager;
     }
@@ -143,7 +139,7 @@ public class UserService {
         User user = userRepository.findUserById(theId);
         System.out.println(user);
         if(!Helper.notNull(user)){ 
-             throw new AuthenticationFailException("User is not present");
+            throw new AuthenticationFailException("User is not present");
         }
         return user;
     }

@@ -52,6 +52,11 @@ public class Category {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+    @Override
+    public String toString() {
+        return "Category [id=" + id + ", categoryName=" + categoryName + ", description=" + description + ", createdAt="
+                + createdAt + ", updatedAt=" + updatedAt + "]";
+    }
 
     
 

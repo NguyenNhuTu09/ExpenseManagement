@@ -18,7 +18,7 @@ public class Transaction {
     private String categoryId;
     private Double amount;
 
-    private TransactionType transactionType;
+    private TransactionType transactionType; // loại giao dịch: thu nhập hoặc chi tiêu
     private String description;
     private Date createdAt;
     private Date updatedAt;
