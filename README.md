@@ -1,6 +1,6 @@
-# TITCommunity
+# ExpenseManagement
 
-TIT Fitness is an application that helps users lose weight using the system's meals, exercises, or the user's own creation.
+ExpenseManagement is an application that helps users manage personal expenses.
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@ TIT Fitness is an application that helps users lose weight using the system's me
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/NguyenNhuTu09/TITFitness.git
+    git clone https://github.com/NguyenNhuTu09/ExpenseManagement.git
     ```
 
 2. Navigate to the project directory:
